@@ -33,11 +33,13 @@ DROP TABLE IF EXISTS `Booking`;
 
 CREATE TABLE `Booking` (
   `BookingId` bigint(20) NOT NULL,
-  `BookingId` bigint(20) NOT NULL,
-  `DateFrom` DATE NOT NULL,
-  `TimeFrom` TIME NOT NULL,
-  `DateTo` DATE NOT NULL,
-  `TimeTo` TIME NOT NULL,
+  `CustomerId` bigint(20) NOT NULL,
+  `ServiceDate` DATE NOT NULL,
+  `ServiceTime` TIME NOT NULL,
+  `Place` VARCHAR(100) CHARACTER SET utf8 NOT NULL,
+  `FlightNo` VARCHAR(100) CHARACTER SET utf8,
+  `NoOfPassenger` INTEGER NOT NULL,
+  `NoOfLuggage` INTEGER,
   `LastUpdated` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 

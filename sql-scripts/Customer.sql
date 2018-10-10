@@ -35,6 +35,7 @@ CREATE TABLE `Customer` (
   `CustomerId` bigint(20) NOT NULL,
   `CustomerEmail` varchar(1000) CHARACTER SET utf8 NOT NULL,
   `CustomerName` varchar(100) CHARACTER SET utf8 NOT NULL,
+  `CustomerNickname` varchar(100) CHARACTER SET utf8 NOT NULL,
   `CustomerPhone` varchar(100) CHARACTER SET utf8 NOT NULL,
   `LastUpdated` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
