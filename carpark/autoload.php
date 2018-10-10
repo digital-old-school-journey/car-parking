@@ -3,4 +3,8 @@
     include_once("model/MyHelper.php");
     include_once("model/Configuration.php");
     include_once("model/ConfigurationRepository.php");
+    include_once("model/Customer.php");
+    include_once("model/CustomerRepository.php");
+    include_once("model/Booking.php");
+    include_once("model/BookingRepository.php");
 ?>

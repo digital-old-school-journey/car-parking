@@ -21,21 +21,17 @@ class ConfigurationRepository
             throw new \Exception($ex->getMessage());
         } 
     }
-    public function find($configuration_id)
+    public function find($id)
     {
         $stmt = $this->connection->prepare('
             SELECT "Configuration", Configuration.* 
              FROM Configuration 
-             WHERE ConfigurationId = :configuration_id
+             WHERE id = :id
         ');
-        $stmt->bindParam(':configuration_id', $configuration_id);
+        $stmt->bindParam(':id', $id);
         $stmt->execute();
-        
-        // Set the fetchmode to populate an instance of 'User'
-        // This enables us to use the following:
-        //     $user = $repository->find(1234);
-        //     echo $user->firstname;
-        $stmt->setFetchMode(PDO::FETCH_CLASS, 'User');
+
+        $stmt->setFetchMode(PDO::FETCH_CLASS, Configuration::class);
         return $stmt->fetch();
     }
     public function findAll()
@@ -44,21 +40,18 @@ class ConfigurationRepository
             SELECT * FROM Configuration
         ');
         $stmt->execute();
-        $stmt->setFetchMode(PDO::FETCH_CLASS, 'Configuration');
-        
-        // fetchAll() will do the same as above, but we'll have an array. ie:
-        //    $users = $repository->findAll();
-        //    echo $users[0]->firstname;
+        $stmt->setFetchMode(PDO::FETCH_CLASS, Configuration::class);
+    
         return $stmt->fetchAll();
     }
     public function save(Configuration $config)
     {
-        if (isset($config->configuration_id)) {
+        if (isset($config->id)) {
             return $this->update($config);
         }
         $stmt = $this->connection->prepare('
             INSERT INTO Configuration 
-                (NoOfCarInZoneMonthly, NoOfCarOutZoneMonthly) 
+                (no_of_car_in_zone_monthly, no_of_car_out_zone_monthly) 
             VALUES 
                 (:no_of_car_in_zone_monthly, :no_of_car_out_zone_monthly)
         ');
@@ -68,7 +61,7 @@ class ConfigurationRepository
     }
     public function update(Configuration $config)
     {
-        if (!isset($config->configuration_id)) {
+        if (!isset($config->id)) {
             // We can't update a record unless it exists...
             throw new \LogicException(
                 'Cannot update configuration that does not yet exist in the database.'
@@ -76,13 +69,28 @@ class ConfigurationRepository
         }
         $stmt = $this->connection->prepare('
             UPDATE Configuration
-            SET     NoOfCarInZoneMonthly = :no_of_car_in_zone_monthly,
-                    NoOfCarOutZoneMonthly = :no_of_car_out_zone_monthly
-            WHERE Configurationid = :configuration_id
+            SET     no_of_car_in_zone_monthly = :no_of_car_in_zone_monthly,
+            no_of_car_in_zone_monthly = :no_of_car_in_zone_monthly
+            WHERE id = :id
         ');
         $stmt->bindParam(':no_of_car_in_zone_monthly', $config->no_of_car_in_zone_monthly);
         $stmt->bindParam(':no_of_car_out_zone_monthly', $config->no_of_car_out_zone_monthly);
-        $stmt->bindParam(':configuration_id', $config->configuration_id);
+        $stmt->bindParam(':id', $config->id);
+        return $stmt->execute();
+    }
+    public function delete($id)
+    {
+        if (!isset($id)) {
+            // We can't update a record unless it exists...
+            throw new \LogicException(
+                'Cannot delete configuration that does not yet exist in the database.'
+            );
+        }
+        $stmt = $this->connection->prepare('
+            DELETE FROM Configuration
+            WHERE id = :id
+        ');
+        $stmt->bindParam(':id', $id);
         return $stmt->execute();
     }
 }

@@ -32,15 +32,15 @@ SET time_zone = "+07:00";
 DROP TABLE IF EXISTS `Booking`;
 
 CREATE TABLE `Booking` (
-  `BookingId` bigint(20) NOT NULL,
-  `CustomerId` bigint(20) NOT NULL,
-  `ServiceDate` DATE NOT NULL,
-  `ServiceTime` TIME NOT NULL,
-  `Place` VARCHAR(100) CHARACTER SET utf8 NOT NULL,
-  `FlightNo` VARCHAR(100) CHARACTER SET utf8,
-  `NoOfPassenger` INTEGER NOT NULL,
-  `NoOfLuggage` INTEGER,
-  `LastUpdated` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `id` bigint(20) NOT NULL,
+  `customer_id` bigint(20) NOT NULL,
+  `service_date` DATE NOT NULL,
+  `service_time` TIME NOT NULL,
+  `place` VARCHAR(100) CHARACTER SET utf8 NOT NULL,
+  `flight_no` VARCHAR(100) CHARACTER SET utf8,
+  `no_of_passenger` INTEGER NOT NULL,
+  `no_of_luggage` INTEGER,
+  `last_updated` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
@@ -51,7 +51,7 @@ CREATE TABLE `Booking` (
 -- Indexes for table `Booking`
 --
 ALTER TABLE `Booking`
-  ADD PRIMARY KEY (`BookingId`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -61,7 +61,7 @@ ALTER TABLE `Booking`
 -- AUTO_INCREMENT for table `Booking`
 --
 ALTER TABLE `Booking`
-  MODIFY `BookingId` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

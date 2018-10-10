@@ -32,12 +32,12 @@ DROP TABLE IF EXISTS `Customer`;
 --
 
 CREATE TABLE `Customer` (
-  `CustomerId` bigint(20) NOT NULL,
-  `CustomerEmail` varchar(1000) CHARACTER SET utf8 NOT NULL,
-  `CustomerName` varchar(100) CHARACTER SET utf8 NOT NULL,
-  `CustomerNickname` varchar(100) CHARACTER SET utf8 NOT NULL,
-  `CustomerPhone` varchar(100) CHARACTER SET utf8 NOT NULL,
-  `LastUpdated` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `id` bigint(20) NOT NULL,
+  `email` varchar(1000) CHARACTER SET utf8 NOT NULL,
+  `name` varchar(100) CHARACTER SET utf8 NOT NULL,
+  `nickname` varchar(100) CHARACTER SET utf8 NOT NULL,
+  `phone` varchar(100) CHARACTER SET utf8 NOT NULL,
+  `last_updated` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
@@ -48,7 +48,7 @@ CREATE TABLE `Customer` (
 -- Indexes for table `Customer`
 --
 ALTER TABLE `Customer`
-  ADD PRIMARY KEY (`CustomerId`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -58,7 +58,7 @@ ALTER TABLE `Customer`
 -- AUTO_INCREMENT for table `Customer`
 --
 ALTER TABLE `Customer`
-  MODIFY `CustomerId` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

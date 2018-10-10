@@ -32,10 +32,10 @@ DROP TABLE IF EXISTS `Configuration`;
 --
 
 CREATE TABLE `Configuration` (
-  `ConfigurationId` bigint(20) NOT NULL,
-  `NoOfCarInZoneMonthly` INTEGER NOT NULL DEFAULT 0,
-  `NoOfCarOutZoneMonthly` INTEGER NOT NULL DEFAULT 0,
-  `LastUpdated` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `id` bigint(20) NOT NULL,
+  `no_of_car_in_zone_monthly` INTEGER NOT NULL DEFAULT 0,
+  `no_of_car_out_zone_monthly` INTEGER NOT NULL DEFAULT 0,
+  `last_updated` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
@@ -46,7 +46,7 @@ CREATE TABLE `Configuration` (
 -- Indexes for table `Configuration`
 --
 ALTER TABLE `Configuration`
-  ADD PRIMARY KEY (`ConfigurationId`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -56,7 +56,7 @@ ALTER TABLE `Configuration`
 -- AUTO_INCREMENT for table `Configuration`
 --
 ALTER TABLE `Configuration`
-  MODIFY `ConfigurationId` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

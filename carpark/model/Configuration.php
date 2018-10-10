@@ -6,6 +6,7 @@ class Configuration{
     public $configuration_id;
     public $no_of_car_in_zone_monthly;
     public $no_of_car_out_zone_monthly;
+    public $last_updated;
 
     public function __construct($data = null)
     {
