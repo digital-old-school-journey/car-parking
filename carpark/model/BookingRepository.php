@@ -51,17 +51,25 @@ class BookingRepository
         }
         $stmt = $this->connection->prepare('
             INSERT INTO Booking 
-                (customer_id, service_date, service_time, place, flight_no, no_of_passenger, no_of_luggage) 
+                (code, customer_id, date_from, time_from, date_to, time_to, place, flight_no, no_of_passenger, no_of_luggage, price, real_date_from, real_time_from, real_date_to, real_time_to) 
             VALUES 
-                (:customer_id, :service_date, :service_time, :place, :flight_no, :no_of_passenger, :no_of_luggage)
+                (:code, :customer_id, :date_from, :time_from, :date_to, :time_to, :place, :flight_no, :no_of_passenger, :no_of_luggage, :price, :real_date_from, :real_time_from, :real_date_to, :real_time_to)
         ');
+        $stmt->bindParam(':code', $booking->code);
         $stmt->bindParam(':customer_id', $booking->customer_id);
-        $stmt->bindParam(':service_date', $booking->service_date);
-        $stmt->bindParam(':service_time', $booking->service_time);
+        $stmt->bindParam(':date_from', $booking->date_from);
+        $stmt->bindParam(':time_from', $booking->time_from);
+        $stmt->bindParam(':date_to', $booking->date_to);
+        $stmt->bindParam(':time_to', $booking->time_to);
         $stmt->bindParam(':place', $booking->place);
         $stmt->bindParam(':flight_no', $booking->flight_no);
         $stmt->bindParam(':no_of_passenger', $booking->no_of_passenger);
         $stmt->bindParam(':no_of_luggage', $booking->no_of_luggage);
+        $stmt->bindParam(':price', $booking->price);
+        $stmt->bindParam(':real_date_from', $booking->real_date_from);
+        $stmt->bindParam(':real_time_from', $booking->real_time_from);
+        $stmt->bindParam(':real_date_to', $booking->real_date_to);
+        $stmt->bindParam(':real_time_to', $booking->real_time_to);
         return $stmt->execute();
     }
     public function update(Booking $booking)
@@ -74,22 +82,38 @@ class BookingRepository
         }
         $stmt = $this->connection->prepare('
             UPDATE Booking
-            SET     customer_id = :customer_id,
-                    service_date = :service_date,
-                    service_time = :service_time,
+            SET     code = :code,
+                    customer_id = :customer_id,
+                    date_from = :date_from,
+                    time_from = :time_from,
+                    date_to = :date_to,
+                    time_to = :time_to,
                     place = :place,
                     flight_no = :flight_no,
                     no_of_passenger = :no_of_passenger,
                     no_of_luggage = :no_of_luggage
+                    price = :price,
+                    real_date_from = :real_date_from,
+                    real_time_from = :real_time_from,
+                    real_date_to = :real_date_to,
+                    real_time_to = :real_time_to
             WHERE id = :id
         ');
+        $stmt->bindParam(':code', $booking->code);
         $stmt->bindParam(':customer_id', $booking->customer_id);
-        $stmt->bindParam(':service_date', $booking->service_date);
-        $stmt->bindParam(':service_time', $booking->service_time);
+        $stmt->bindParam(':date_from', $booking->date_from);
+        $stmt->bindParam(':time_from', $booking->time_from);
+        $stmt->bindParam(':date_to', $booking->date_to);
+        $stmt->bindParam(':time_to', $booking->time_to);
         $stmt->bindParam(':place', $booking->place);
         $stmt->bindParam(':flight_no', $booking->flight_no);
         $stmt->bindParam(':no_of_passenger', $booking->no_of_passenger);
         $stmt->bindParam(':no_of_luggage', $booking->no_of_luggage);
+        $stmt->bindParam(':price', $booking->price);
+        $stmt->bindParam(':real_date_from', $booking->real_date_from);
+        $stmt->bindParam(':real_time_from', $booking->real_time_from);
+        $stmt->bindParam(':real_date_to', $booking->real_date_to);
+        $stmt->bindParam(':real_time_to', $booking->real_time_to);
         $stmt->bindParam(':id', $booking->id);
         return $stmt->execute();
     }

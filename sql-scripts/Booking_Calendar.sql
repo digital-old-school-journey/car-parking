@@ -29,25 +29,13 @@ SET time_zone = "+07:00";
 -- Table structure for table `Booking`
 --
 
-DROP TABLE IF EXISTS `Booking`;
+DROP TABLE IF EXISTS `Booking_Calender`;
 
-CREATE TABLE `Booking` (
+CREATE TABLE `Booking_Calender` (
   `id` bigint(20) NOT NULL,
-  `code` bigint(20) NOT NULL,
-  `customer_id` bigint(20) NOT NULL,
-  `date_from` DATE NOT NULL,
-  `time_from` TIME NOT NULL,
-  `date_to` DATE NOT NULL,
-  `time_to` TIME NOT NULL,
-  `place` VARCHAR(100) CHARACTER SET utf8 NOT NULL,
-  `flight_no` VARCHAR(100) CHARACTER SET utf8,
-  `no_of_passenger` INTEGER NOT NULL,
-  `no_of_luggage` INTEGER,
-  `price` INTEGER,
-  `real_date_from` DATE,
-  `real_time_from` TIME,
-  `real_date_to` DATE,
-  `real_time_to` TIME,
+  `booking_id` bigint(20) NOT NULL,
+  `service_date` DATE NOT NULL,
+  `service_time` TIME NOT NULL,
   `last_updated` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
@@ -58,7 +46,7 @@ CREATE TABLE `Booking` (
 --
 -- Indexes for table `Booking`
 --
-ALTER TABLE `Booking`
+ALTER TABLE `Booking_Calender`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -68,7 +56,7 @@ ALTER TABLE `Booking`
 --
 -- AUTO_INCREMENT for table `Booking`
 --
-ALTER TABLE `Booking`
+ALTER TABLE `Booking_Calender`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
 COMMIT;
 

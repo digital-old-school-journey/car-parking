@@ -7,4 +7,6 @@
     include_once("model/CustomerRepository.php");
     include_once("model/Booking.php");
     include_once("model/BookingRepository.php");
+    include_once("model/BookingCalendar.php");
+    include_once("model/BookingCalendarRepository.php");
 ?>
