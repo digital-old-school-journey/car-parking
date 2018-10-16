@@ -44,7 +44,7 @@ class BookingCalendarRepository
         
         return $stmt->fetchAll();
     }
-    public function save(BookingCaldendar $bookingCalender)
+    public function save(BookingCalendar $bookingCalender)
     {
         if (isset($bookingCalender->id)) {
             return $this->update($bookingCalender);

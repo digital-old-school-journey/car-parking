@@ -1,12 +1,18 @@
 <?php
-    date_default_timezone_set("Asia/Bangkok");
-    include_once("model/MyHelper.php");
-    include_once("model/Configuration.php");
-    include_once("model/ConfigurationRepository.php");
-    include_once("model/Customer.php");
-    include_once("model/CustomerRepository.php");
-    include_once("model/Booking.php");
-    include_once("model/BookingRepository.php");
-    include_once("model/BookingCalendar.php");
-    include_once("model/BookingCalendarRepository.php");
+    //date_default_timezone_set("Asia/Bangkok");
+    class Autoloader
+    {
+        public static function register()
+        {
+            spl_autoload_register(function ($class) {
+                $file = __DIR__.DIRECTORY_SEPARATOR.str_replace('\\', DIRECTORY_SEPARATOR, $class).'.php';
+                if (file_exists($file)) {
+                    require $file;
+                    return true;
+                }
+                return false;
+            });
+        }
+    }
+    Autoloader::register();
 ?>

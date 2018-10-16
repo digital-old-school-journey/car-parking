@@ -15,7 +15,7 @@ class BookingCalendar{
             if(!empty($data['id'])){
                 $this->id = $data['id'];
             }
-            $this->customer_id = $data['booking_id'];
+            $this->booking_id = $data['booking_id'];
             $this->service_date = $data['service_date'];
             $this->service_time = $data['service_time'];
             $this->last_updated = $data['last_updated'];
